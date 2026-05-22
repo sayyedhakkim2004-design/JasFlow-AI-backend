@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: "https://jas-flow-ai-frontend.vercel.app/",
+    origin: "https://jasflow-ai.vercel.app",
     credentials: true
 }));
 
