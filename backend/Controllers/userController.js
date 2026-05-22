@@ -42,7 +42,7 @@ export const createUser = async (req, res) => {
     const token = jwt.sign({ id: userData._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "None",
       maxAge: 1000 * 60 * 60 * 24
     });
@@ -73,7 +73,7 @@ export const login = async (req, res) => {
     const token = jwt.sign({ id: isExistingUser._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "None",
       maxAge: 1000 * 60 * 60 * 24
     });
@@ -116,7 +116,7 @@ export const googleCallBack = (req, res) => {
     const token = generateToken(req.user);
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // true in production
+      secure: true, // true in production
       sameSite: "None",
     });
     res.redirect(`${process.env.CLIENT_URL}/generate`);
@@ -150,7 +150,7 @@ export const sendOtp = async (req, res) => {
     const token = jwt.sign({ id: foundUser._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
     res.cookie("passwordToken", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "None",
       maxAge: 1000 * 60 * 60 * 24
     });
