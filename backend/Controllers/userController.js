@@ -43,7 +43,7 @@ export const createUser = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,
-      sameSite: "lax",
+      sameSite: "None",
       maxAge: 1000 * 60 * 60 * 24
     });
     return res.status(201).json({ success: true, message: "User Created Successfully" });
@@ -74,7 +74,7 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false,
-      sameSite: "lax",
+      sameSite: "None",
       maxAge: 1000 * 60 * 60 * 24
     });
     return res.status(200).json({ success: true, message: "Login Successfully" });
@@ -117,7 +117,7 @@ export const googleCallBack = (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: false, // true in production
-      sameSite: "lax",
+      sameSite: "None",
     });
     res.redirect(`${process.env.CLIENT_URL}/generate`);
   }
@@ -151,7 +151,7 @@ export const sendOtp = async (req, res) => {
     res.cookie("passwordToken", token, {
       httpOnly: true,
       secure: false,
-      sameSite: "lax",
+      sameSite: "None",
       maxAge: 1000 * 60 * 60 * 24
     });
     await sendEmail({
